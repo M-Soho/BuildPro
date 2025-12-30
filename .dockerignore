@@ -1,0 +1,4 @@
+# Docker support (optional, for containerized development)
+.dockerignore
+Dockerfile
+docker-compose.yml

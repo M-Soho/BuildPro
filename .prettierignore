@@ -1,0 +1,12 @@
+node_modules
+dist
+build
+.next
+coverage
+*.pyc
+__pycache__
+.pytest_cache
+.ruff_cache
+.mypy_cache
+pnpm-lock.yaml
+package-lock.json

@@ -1,0 +1,38 @@
+{
+  "name": "buildpro-monorepo",
+  "version": "0.1.0",
+  "private": true,
+  "description": "BuildPro - Multi-tenant construction management platform",
+  "scripts": {
+    "dev": "pnpm --parallel --stream dev",
+    "dev:web": "pnpm --filter web dev",
+    "dev:api": "cd apps/api && ./scripts/dev.sh",
+    "build": "pnpm --recursive build",
+    "build:web": "pnpm --filter web build",
+    "lint": "pnpm --recursive lint && pnpm lint:python",
+    "lint:fix": "pnpm --recursive lint:fix && pnpm lint:python:fix",
+    "lint:python": "cd apps/api && ruff check . && black --check .",
+    "lint:python:fix": "cd apps/api && ruff check --fix . && black .",
+    "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,md,yml,yaml}\"",
+    "format:check": "prettier --check \"**/*.{ts,tsx,js,jsx,json,md,yml,yaml}\"",
+    "typecheck": "pnpm --recursive typecheck",
+    "test": "pnpm --recursive test && pnpm test:python",
+    "test:python": "cd apps/api && pytest",
+    "clean": "pnpm --recursive clean && rm -rf node_modules",
+    "prepare": "husky install"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.6",
+    "eslint": "^8.56.0",
+    "husky": "^8.0.3",
+    "lint-staged": "^15.2.0",
+    "prettier": "^3.1.1",
+    "turbo": "^1.11.3",
+    "typescript": "^5.3.3"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "pnpm": ">=8.0.0"
+  },
+  "packageManager": "pnpm@8.15.1"
+}
